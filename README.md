@@ -2,6 +2,8 @@
 
 Follows YouTube tutorial on implementing GAN on MNIST dataset
 
+Author: bnsreenu
+
 Tutorial Links:
 
 https://youtu.be/Mng57Tj18pc?si=P-RKqwhHw6752iTb
