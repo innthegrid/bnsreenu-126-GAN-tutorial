@@ -47,9 +47,6 @@ img_shape = (img_rows, img_cols, channels)
 
 # Given an input of noise (latent) vector, the Generator will generate an image
 def build_generator():
-
-	### Sequential API - BUILD THE MODEL ###
-  
 	# Define the noise (seed) to be a vector (1D) of size 100
 	noise_shape = (100,)
   
@@ -101,8 +98,6 @@ def build_generator():
 	# Prints a table showing the layers and number of parameters
 	model.summary()
 
-	### Functional API - USE THE MODEL ###
-
 	# Creates the Tensorspace to accept a list of 100 numbers, the size of the seed
 	noise = Input(shape=noise_shape)
 
@@ -116,8 +111,6 @@ def build_generator():
 
 # Given an input image, the Discriminator returns the likelihood of the image being real (binary classification)
 def build_discriminator():
-	### SEQUENTIAL API ###
-
 	model = Sequential()
 
 	# Disciminator is the opposite of the generator, condenses from 512 -> 256
@@ -144,8 +137,6 @@ def build_discriminator():
 	model.add(Dense(1, activation='sigmoid'))
 
 	model.summary()
-
-	### FUNCTIONAL API ###
 
 	img = Input(shape=img_shape)
 	validity = model(img)
@@ -299,6 +290,6 @@ valid = discriminator(img)
 combined = Model(z, valid)
 combined.compile(loss='binary_crossentropy', optimizer=optimizer)
 
-train(epochs=10000, batch_size=32, save_interval=200)
+train(epochs=10000, batch_size=32, save_interval=500)
 
 generator.save('generator_model.h5')
